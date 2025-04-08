@@ -1,0 +1,64 @@
+*{
+    background-color: lightblue;
+}
+
+.tab {
+    overflow: hidden;
+    background-color: rgb(115, 146, 217);
+    height: 60px; 
+    display: flex;
+    
+}
+
+.tab button {
+    background-color: rgb(115, 146, 217);
+    float: left;
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    font-size: 20px;
+    font-display: swap;
+    cursor: pointer;
+    transition: 0.3s;
+    height: 100%;
+    margin: 0;
+    flex-grow: 1;
+    border: 2px solid rgb(6, 137, 237);
+    
+}
+
+.tab button:hover {
+    background-color: rgb(6, 137, 237);
+}
+
+.tab button.active {
+    background-color: lightblue;
+}
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+    
+}
+
+.h2 {
+    color: DodgerBlue;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.h1 {
+    color: navy;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.tabpage {
+    font-family: 'Courier New', Courier, monospace; 
+    color: navy;
+}
+
+.about {
+    color: DodgerBlue;
+    font-family: 'Courier New', Courier, monospace;
+
+}

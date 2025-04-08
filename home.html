@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <link rel="stylesheet" href="h.css">
+</head>
+<body>
+    <div class="tab">
+        <button class="tabpage" onclick="openTab(event, 'MainPage')">Main</button>
+        <button class="tabpage" onclick="openTab(event, 'USStates')">Analysis</button>
+        <button class="tabpage" onclick="openTab(event, 'About')">About Us</button>
+    </div>
+
+    <div id="MainPage" class="tabcontent">
+            <h1 class="h1">U.S. Healthcare Insurance Analysis</h1>
+            <h2 class="h2">Why did we chose to analyze Health Insurance Data?</h2>
+            <h2 class ="h2">
+                <p>
+                    Health care refers to an organized provision of medical services to maintain and improve human health. However, in the United States, U.S. healthcare is more of a business, and patients are paying customers. Health insurance plays a crucial role in determining who gets access to which type of care and the costs involved. 
+                    One concern is rising costs as in 2025, the average monthly premium for the silver plan under the Affordable Care Act was approximately $621, a 7% increase from 2024. Despite being a mid-tier plan, it is very expensive and can be financially burdensome for many, even with deductibles, copayments, and out-of-pocket costs.
+                    Another concern is many Americans having their insurance claims denied. In 2023, insurers of marketplace plans denied about 20% of all in-network claims and an even higher percentage of out-of-network care. Shockingly, fewer than 1% of denials were ever appealed, often due to the lack of awareness or how complex the appeals process is. 
+                    Overall, there are disparities when it comes to access, claim approvals, and cost-effectiveness that create concerns about the efficiency of the existing insurance model. Hence, we have created an effective data-driven solution by identifying trends and helping to analyze these issues with factors such as income levels, unemployment status, and geographic location.
+                </p>
+            </h2>
+
+            <h2 class="h2">Questions We Aim To Answer:
+                <ul>
+                    <li>What is the best health insurance for patients based on patient statistics, healthcare needs, and insurance providers’ costs and coverage?</li>
+                    <li>How many people in the US are insured compared to the number of people in the US who are uninsured?</li>
+                    <li>What are the average costs of health insurance in each state in the US?</li>
+                    <li>What are the percentages of all listed insurance plans that are used by state?</li>
+                    <li>What is the percentage of those who receive insurance from their employer?</li>
+                </ul>
+            </h2>
+    </div>
+
+    <div id="USStates" class="tabcontent">
+        <h1 class="h1">Data Visualization Graphics By State</h1>
+        <img src= "https://th.bing.com/th/id/OIP.FdEQQbHeastvJcMda1PcLwHaEb?rs=1&pid=ImgDetMain">
+        
+    </div>
+    <div id="About" class="tabcontent">
+        <h3 class="about">By: Gauri Arvind, Akshitaa Jay, Tiven Pangtono</h3>
+    </div>
+
+    <script>
+        //ChatGPT(LLM) By OpenAI was used to create the openTab function in order for the page tab switching functionality and displays the pages content when the user switches between the three tabs when they click on a tab
+        //“Handling Tabswitching and clicking on tabs using onclick”. ChatGPT, 7 April 2025, OpenAI, March 2023, chat.openai.com.
+        function openTab(event, name) { 
+            var tabcontent = document.getElementsByClassName("tabcontent");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none"; //hides other tab content
+            }
+            var tabpage = document.getElementsByClassName("tabpage");
+            for (var i = 0; i < tabpage.length; i++) {
+                tabpage[i].className = tabpage[i].className.replace(" active", ""); //removes all other tabs set as the active tab which are tabs that aren't currently viewed
+            }
+            document.getElementById(name).style.display = "block"; 
+            event.currentTarget.className += " active"; //sets tab in use to active status so that tabs content is displayed
+        }
+
+        document.querySelector(".tabpage").click(); //click on tab allowing tabs content to be displayed
+    </script>
+</body>
+</html>
