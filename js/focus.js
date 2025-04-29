@@ -1,5 +1,8 @@
 // This is where the code for the focus parts will be
 // TODO: fix the frontend to include this script from the start
+// TODO: add transitions
+// TODO: add y axis label for bar chart
+// TODO: take a look at questions and see if there's any other questions that could be made in the focus section
 
 // Creates a pie chart for the given state
 // Parameters: state (string) - a given state
@@ -44,9 +47,7 @@ function createPieChart(state) {
                     .attr("class", "arc");
         
         arcs.append("path")
-            .attr("fill", (d, i) => {
-                return color(i);
-            })
+            .attr("fill", (d, i) => color(i))
             .attr("d", arc);
         
         // Creates a legend for the pie chart
@@ -123,17 +124,15 @@ function createState(state) {
     }
 }
 
-// TODO: to replace the table, we can compare medicaid enrollment
-//       via a bar chart I guess,
-
 // Creates the bar chart for Medicaid information for a given state
 // Parameters: state (string) - a given state
 function createBarChart(state) {
-    let color = d3.scaleOrdinal(["#5677bf", "#fb9259"]);
+    let color = d3.scaleOrdinal(["#363653", "#fb9259"]);
 
     const data = d3.csv(`data/healthInsurance.csv`).then(output => {
         for(let i = 0; i < output.length; ++i) {
-            if(output[i].State == state) {
+            let currState = output[i].State
+            if(currState == state && currState != "Maine" && currState != "Connecticut") {
                 makeBar(output[i])
                 break;
             }
@@ -153,7 +152,7 @@ function createBarChart(state) {
                 .attr("width", height)
                 .attr("height", width)
                 .style("stroke", "none")
-                .style("fill", "white");
+                .style("fill", "lightblue");
         
         const barSearch = ["Medicaid_Enrollment_(2013)", "Medicaid_Enrollment_(2016)"];
         const barSearchCleaned = ["Medicaid Enrollment (2013)", "Medicaid Enrollment (2016)"];
@@ -161,9 +160,9 @@ function createBarChart(state) {
         let data16 = parseInt(data[barSearch[1]]);
 
         let scale = Math.pow(10, (Math.min(data13, data16).toString().length - 1));
-        const barData = [data13/scale, data16/scale];
+        const barData = [Math.log(data13/scale), Math.log(data16/scale)];
 
-        let max = Math.max(...barData);
+        let max = Math.round(Math.max(...barData));
 
         let xScale = d3.scaleBand()
                         .domain(barSearchCleaned)
@@ -190,7 +189,6 @@ function createBarChart(state) {
 
         
         // Create bars
-        // TODO: why is the first one appearing greater than the second? That's not supposed to be the case...
         let barWidth = Math.floor((width - margin.left - margin.right)/4);
 
         barChart.append('g')
@@ -202,15 +200,15 @@ function createBarChart(state) {
                 .style("fill", (d, i) => color(i))
                 .merge(barChart)
                 .attr("x", (d, i) => i * barWidth * 2 + margin.right * 3.75)
-                .attr("y", (d, i) => margin.top + (d*barWidth)  - margin.bottom)
+                .attr("y", (d, i) => yScale(d))
                 .attr("width", barWidth)
-                .attr("height", d => height - (d*barWidth) - margin.bottom)
+                .attr("height", d => height - yScale(d) - margin.bottom)
                 .attr("opacity", 1);
 
     }
 }
 
-// This is temporarily set to Massachusetts, it does look the same for different states...
+// This is temporarily set to Massachusetts
 createPieChart("Massachusetts");
 // createState("Massachusetts");
 createBarChart("Massachusetts")
