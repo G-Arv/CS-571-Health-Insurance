@@ -1,8 +1,11 @@
 // This is where the code for the focus parts will be
 // TODO: fix the frontend to include this script from the start
-// TODO: add transitions
-// TODO: add y axis label for bar chart
 // TODO: take a look at questions and see if there's any other questions that could be made in the focus section
+
+
+// Things that could be added if time allows:
+// 1. Transitions for pie and bar chart (although at the moment it doesn't work)
+// 2. Try to fix the labeling for the bar chart (although this might be it)
 
 // Creates a pie chart for the given state
 // Parameters: state (string) - a given state
@@ -204,11 +207,21 @@ function createBarChart(state) {
                 .attr("width", barWidth)
                 .attr("height", d => height - yScale(d) - margin.bottom)
                 .attr("opacity", 1);
+        
+        // Add label for y axis
+        barChart.append("text")
+            .attr("class", "yAxisLabel")
+            .attr("text-anchor", "end")
+            .attr("y", 5)
+            .attr("dy", "0.75em")
+            .attr("transform", "rotate(-90)")
+            .text("Natural Log of Patients Enrolled in Medicaid")
 
     }
 }
 
 // This is temporarily set to Massachusetts
-createPieChart("Massachusetts");
-// createState("Massachusetts");
-createBarChart("Massachusetts")
+let currState = "Massachusetts"
+createPieChart(currState);
+// createState(currState);
+createBarChart(currState)
