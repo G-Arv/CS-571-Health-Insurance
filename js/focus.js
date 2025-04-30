@@ -1,12 +1,3 @@
-// This is where the code for the focus parts will be
-// TODO: fix the frontend to include this script from the start
-// TODO: take a look at questions and see if there's any other questions that could be made in the focus section
-
-
-// Things that could be added if time allows:
-// 1. Transitions for pie and bar chart (although at the moment it doesn't work)
-// 2. Try to fix the labeling for the bar chart (although this might be it)
-
 // Creates a pie chart for the given state
 // Parameters: state (string) - a given state
 function createPieChart(state) {
@@ -79,52 +70,6 @@ function createPieChart(state) {
               .attr("x", 20);
     }
 
-}
-
-// TODO: this isn't in geoJSON or topoJSON, so it might be better to not do this one...
-// Creates the geographical representation for a given state
-// Parameters: state (string) - a given state
-function createState(state) {
-    // TODO: For now this will be the color, may want to change to reflect standing...
-    let color = d3.scaleOrdinal(["#264653"]);
-
-    const data = d3.csv(`data/healthInsurance.csv`).then(output => {
-        for(let i = 0; i < output.length; ++i) {
-            if(output[i].State == state) {
-                makeState(output[i])
-                break;
-            }
-        }
-    });
-
-    // Makes the state specifically
-    // Parameters: data (object) - the data for a given state
-    function makeState(data) {
-        const stateSearch = ["Uninsured_Rate_Change_by_Percentage_(2010-2015)"];
-        const stateData = [data[stateSearch[0]]];
-
-        let svg = d3.select("#state-chart");
-        const width = 500;
-        const height = 500;
-
-        let map = d3.geoAlbersUsa()
-                    .scale(100)
-                    .translate([width/2, height/2])
-                    .rotate([0, 0])
-                    .center([0, 0]);
-        
-        let path = d3.geoPath()
-                     .projection(map);
-        
-        svg.selectAll("path")
-            .attr("id", "currState")
-            .data(data)
-            .enter()
-            .append("path")
-            .attr("d", path)
-            .attr("stroke", "cyan")
-            .attr("fill", "#264653");
-    }
 }
 
 // Creates the bar chart for Medicaid information for a given state
@@ -223,5 +168,4 @@ function createBarChart(state) {
 // This is temporarily set to Massachusetts
 let currState = "Massachusetts"
 createPieChart(currState);
-// createState(currState);
 createBarChart(currState)

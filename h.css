@@ -75,19 +75,10 @@
 #pie-chart {
     width: 500px;
     height: 500px;
-    /* background-color: peachpuff; */
-    margin-right: 10px;
-}
-
-#state-chart {
-    width: 500px;
-    height: 500px;
-    background-color: lightgrey;
     margin-right: 10px;
 }
 
 #bar-chart {
     width: 500px;
     height: 500px;
-    background-color: lavender;
 }
