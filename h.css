@@ -62,3 +62,23 @@
     font-family: 'Courier New', Courier, monospace;
 
 }
+
+/* Styling for focus */
+#focus {
+    margin: auto;
+    width: 1550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pie-chart {
+    width: 500px;
+    height: 500px;
+    margin-right: 10px;
+}
+
+#bar-chart {
+    width: 500px;
+    height: 500px;
+}
