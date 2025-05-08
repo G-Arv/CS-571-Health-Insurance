@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <link rel="stylesheet" href="h.css">
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v4.js"></script>
+    <script src="https://d3js.org/topojson.v3.js"></script>
+
+    <script src="js/focus.js"></script>
 </head>
 <body>
     <div class="tab">
@@ -38,9 +44,13 @@
 
     <div id="USStates" class="tabcontent">
         <h1 class="h1">Data Visualization Graphics By State</h1>
-        <img src="images/image4.png">
-        <img src="images/image3.png">
-        <p>We have not created any Visualization as of right now but this is an example of the State Visualizations we plan to create for our next release.</p>
+        <div id="focus">
+            <h3>Massachusetts</h3>
+            <div>
+                <svg id="pie-chart"></svg>
+                <svg id="bar-chart"></svg>
+            </div>
+        </div>
         
         
     </div>
