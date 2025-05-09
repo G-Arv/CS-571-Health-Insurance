@@ -1,6 +1,6 @@
 function createBarChart2(state) {
     let color = d3.scaleOrdinal(["hotpink", "royalblue"]);
-    const data = d3.csv(`data/healthInsurance.csv`).then(output => {
+    const data = d3.csv(`data2/healthInsurance.csv`).then(output => {
         for(let i = 0; i < output.length; ++i) {
             let currState = output[i].State
             if(currState == state && currState != "Maine" && currState != "Connecticut") {
@@ -68,7 +68,11 @@ function createPieChart(state) {
             }
         }
 
-        if (count > 0) { makePie([uninsuredSum / count, insuredSum / count]); }
+        if (count > 0) { 
+            uninsuredavg = uninsuredSum / count;
+            insuredavg = insuredSum / count;
+            makePie([uninsuredavg, insuredavg]); 
+        }
     });
 
     function makePie(pieData) {
