@@ -54,3 +54,43 @@
 "Wisconsin","3209400","299400","105500","181700","624300","543600","339000","47200","327000","5677100"
 "Wyoming","287700","39900","6300","13200","45400","54200","36700","10200","69000","562700"
 "Puerto Rico","747900","250000","32300","357400","1066300","137900","308800","16000","248000","3164500"
+
+"Notes"
+"The American Community Survey did not release the 1-year estimates for 2020 due to significant disruptions to the data collection because of the coronavirus pandemic. 
+"
+""
+"The majority of our health coverage topics are based on analysis of the Census Bureau’s American Community Survey (ACS) by KFF. ACS includes a 1% sample of the US population and allows for precise state-level estimates. "
+""
+"The ACS asks respondents about their health insurance coverage at the time of the survey. Respondents may report having more than one type of coverage; however, individuals are sorted into only one category of insurance coverage. See definitions for more detail on coverage type."
+""
+"Data may not sum to totals due to rounding."
+""
+"Data include the civilian noninstitutionalized population in the United States."
+
+"Sources"
+"KFF estimates based on the 2008-2023 American Community Survey, 1-Year Estimates."
+
+"Definitions"
+"*Employer Only*: Includes those covered by employer-sponsored coverage either through their own job or as a dependent in the same household."
+""
+"*Non-Group Only*: Includes individuals and families who purchased or are covered as a dependent by non-group insurance."
+""
+"*Medicaid and Private Insurance*: Includes those covered by Medicaid and private insurance through an employer or non-group insurance."
+""
+"*Medicaid and Medicare*: Includes those covered by both Medicaid and Medicare, also known as dual eligibles."
+""
+"*Medicaid Only*: Includes those covered by Medicaid, Medical Assistance, Children's Health Insurance Plan (CHIP) or any kind of government-assistance plan for those with low incomes or a disability."
+""
+"*Medicare and Private Insurance*: Includes those covered by Medicare and private insurance through an employer or non-group insurance."
+""
+"*Medicare Only*:  Includes those covered by Medicare alone. "
+""
+"*Military*: Includes those covered under the military or Veterans Administration."
+""
+"*Uninsured*: Includes those without health insurance and those who have coverage under the Indian Health Service only."
+""
+"*N/A*: Estimates with relative standard errors greater than 30% are not provided."
+
+
+Footnotes
+"1. US total excludes Puerto Rico."
