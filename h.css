@@ -2,6 +2,12 @@
     background-color: lightblue;
 }
 
+body {
+    background-color: lightblue;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .tab {
     overflow: hidden;
     background-color: rgb(115, 146, 217);
@@ -60,5 +66,93 @@
 .about {
     color: DodgerBlue;
     font-family: 'Courier New', Courier, monospace;
+
+}
+
+/* Styling for focus */
+#focus {
+    margin: auto;
+    width: 1550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pie-chart {
+    width: 500px;
+    height: 500px;
+}
+
+#bar-chart {
+    width: 1000px;
+    height: 500px
+}
+
+#bar-chart2 {
+    height: 500px;
+    width: 500px;
+}
+
+
+#states {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    background-color: DodgerBlue;
+    color: navy;
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    max-width: 100%;
+   
+}
+
+
+label[for="states"] {
+    font-size: 18px;
+    font-weight: bold;
+    color: DodgerBlue;
+    margin-right: 10px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+    width: 1000px;
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.chart-box {
+    flex: 1 1 500px;
+    max-width: 1000px;
+    background-color: lightblue;
+    padding: 15px;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.chart-title {
+    text-align: center;
+    font-size:25px;
+    font-family: 'Courier New', Courier, monospace;
+    color: royalblue;
+}
+
+#h3 {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    color: blue;
+
 
 }
