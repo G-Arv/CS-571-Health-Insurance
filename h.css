@@ -138,8 +138,8 @@ label[for="states"] {
     padding: 15px;
     text-align: center;
     justify-content: center;
-    
 }
+
 
 .chart-title {
     text-align: center;
@@ -154,4 +154,9 @@ label[for="states"] {
     font-family: 'Courier New', Courier, monospace;
     color: blue;
 
+}
+
+svg {
+    width: 100%;
+    height: 400px;
 }
