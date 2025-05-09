@@ -22,19 +22,13 @@ function createBarChart2(state) {
         const barSearchCleaned = ["Medicaid Enrollment (2013)", "Medicaid Enrollment (2016)"];
         let data13 = parseInt(data[barSearch[0]]);
         let data16 = parseInt(data[barSearch[1]]);
-
         let scale = Math.pow(10, (Math.min(data13, data16).toString().length - 1));
         const barData = [Math.log(data13/scale), Math.log(data16/scale)];
-
         let max = Math.round(Math.max(...barData));
-
         let xScale = d3.scaleBand().domain(barSearchCleaned).range([margin.left, width - margin.right]);
-
         let yScale = d3.scaleLinear().domain([0, max]).range([height - margin.top, margin.bottom]);
-
         let xAxis = d3.axisBottom().tickValues(barSearchCleaned);
         xAxis.scale(xScale);
-
         let yAxis = d3.axisLeft().ticks(10);
         yAxis.scale(yScale);
 
@@ -74,9 +68,7 @@ function createPieChart(state) {
             }
         }
 
-        if (count > 0) {
-            makePie([uninsuredSum / count, insuredSum / count]);
-        }
+        if (count > 0) { makePie([uninsuredSum / count, insuredSum / count]); }
     });
 
     function makePie(pieData) {
@@ -93,7 +85,8 @@ function createPieChart(state) {
         let legend = svg.selectAll(".legend").data(pie(pieData)).enter().append("g")
             .attr("transform", (d, i) => "translate(" + (width / 4) + "," + (i * 15 + 400) + ")").attr("class", "legend");
         legend.append("rect").attr("width", 15).attr("height", 15).attr("fill", (d, i) => color(i));
-        legend.append("text").text((d, i) => i === 0 ? "Uninsured State Average" : "Insured State Average").style("font-size", 15).attr("y", 10).attr("x", 20);
+        legend.append("text").text((d, i) => i === 0 ? "Uninsured State Average" : "Insured State Average").style("font-size", 15)
+        .attr("y", 10).attr("x", 20);
     }
 }
 
@@ -105,18 +98,21 @@ function createBarChart(state) {
     const width = 600 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
     const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-    const keys = ["Employer Only","Non-group Only","Medicaid and Private Insurance","Medicaid and Medicare","Medicaid Only","Medicare and Private Insurance","Medicare Only","Military"];
+    const keys = ["Employer Only","Non-group Only","Medicaid and Private Insurance","Medicaid and Medicare",
+        "Medicaid Only","Medicare and Private Insurance","Medicare Only","Military"];
     const color = d3.scaleOrdinal().domain(keys).range(d3.schemeCategory10);
     d3.csv("data/alldata.csv").then(data => {
         const filtered = data.filter(d => d.Location === state); // Filter by selected state
         filtered.forEach(d => {keys.forEach(key => d[key] = +d[key]); d.Year = d.Year;});
         const stackedData = d3.stack().keys(keys)(filtered);  // Stack the data
         const x = d3.scaleBand().domain(filtered.map(d => d.Year)).range([0, width]).padding(0.2); //by year
-        const y = d3.scaleLinear().domain([0, d3.max(filtered, d => {return keys.reduce((sum, key) => sum + d[key], 0);})]).nice().range([height, 0]); //total
+        const y = d3.scaleLinear().domain([0, d3.max(filtered, d => {return keys.reduce((sum, key) => sum + d[key], 0);})]).nice()
+        .range([height, 0]); //total
         g.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x));
         g.append("g").call(d3.axisLeft(y));
         g.selectAll("g.layer").data(stackedData).enter().append("g").attr("fill", d => color(d.key)).selectAll("rect")
-            .data(d => d).enter().append("rect").attr("x", d => x(d.data.Year)).attr("y", d => y(d[1])).attr("height", d => y(d[0]) - y(d[1])).attr("width", x.bandwidth());  // Draw bars
+            .data(d => d).enter().append("rect").attr("x", d => x(d.data.Year)).attr("y", d => y(d[1])).attr("height", d => y(d[0]) - y(d[1]))
+            .attr("width", x.bandwidth());  // Draw bars
         const legend = svg.append("g").attr("transform", `translate(${width + margin.left + 10},${margin.top})`); //legend
         keys.forEach((key, i) => {
             const row = legend.append("g").attr("transform", `translate(0,${i * 20})`);
