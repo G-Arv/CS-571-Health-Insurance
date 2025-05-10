@@ -24,7 +24,7 @@ In case the PDF version of the process book is not accessible, the process book 
 This is the link to our Github Pages site: [Website](https://g-arv.github.io/CS-571-Health-Insurance/). 
 
 ## Screencast Link
-This is the link to our Screencast: [Screencast](https://drive.google.com/file/d/1i_-J2PqWm9Y4z2HEQUEf6Ydcu5dIiEXM/view?usp=share_link). 
+This is the link to our Screencast: [Screencast](https://drive.google.com/file/d/1i_-J2PqWm9Y4z2HEQUEf6Ydcu5dIiEXM/view?usp=share_link).  
 
 ## Authors
 By: Akshitaa Jay, Gauri Arvind, Tiven Pangtono
