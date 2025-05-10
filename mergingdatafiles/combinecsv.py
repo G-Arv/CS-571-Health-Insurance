@@ -1,8 +1,9 @@
+"""
 import pandas as pd
 import os
 
 # Path to folder containing your CSV files
-folder_path = r'C:\Users\akshi\OneDrive\Documents\GitHub\CS-571-Health-Insurance\public\data'
+folder_path = r'C:\Users\akshi\OneDrive\Documents\GitHub\CS-571-Health-Insurance\data'
 
 csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')] # List of CSV files
 data_frames = []
@@ -25,3 +26,7 @@ if data_frames:
     output_path = os.path.join(folder_path, 'alldata.csv')
     combined_df.to_csv(output_path, index=False)
     
+
+
+"""
+

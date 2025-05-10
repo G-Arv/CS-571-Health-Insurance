@@ -16,7 +16,7 @@
     <div class="tab">
         <button class="tabpage" onclick="openTab(event, 'MainPage')">Main</button>
         <button class="tabpage" onclick="openTab(event, 'USStates')">Analysis</button>
-        <button class="tabpage" onclick="openTab(event, 'About')">About Us</button>
+        <button class="tabpage" onclick="openTab(event, 'About')">Demo</button>
     </div>
 
     <div id="MainPage" class="tabcontent">
@@ -38,7 +38,18 @@
                     <li>What are the percentages of all listed insurance plans that are used by state?</li>
                     <li>What is the percentage of those who receive insurance from their employer?</li>
                 </ul>
-            </h2>
+            </h2>       
+            
+            <div class="charts-container2">
+                <div class="chart-box2">
+                    <h3 class="chart-title">Insurance Cost In Selected States From 2008 To 2020</h3>
+                    <svg id="line-chart" width="1200" height="400" text-align="center"></svg>
+                    <div id="checkbox-container"></div>
+                    <div id="legend"></div>
+                </div>
+            </div>            
+            
+
     </div>
 
     <div id="USStates" class="tabcontent">
@@ -123,6 +134,9 @@
     </div>
     <div id="About" class="tabcontent">
         <h3 class="about">By: Gauri Arvind, Akshitaa Jay, Tiven Pangtono</h3>
+        <iframe src="https://drive.google.com/file/d/1i_-J2PqWm9Y4z2HEQUEf6Ydcu5dIiEXM/preview"
+        width="1000" height="600" allow="autoplay" allowfullscreen>
+        </iframe>
     </div>
 
     <script>
@@ -157,6 +171,11 @@
                 createBarChart2(stateName);
             }
         });
+            
+        window.addEventListener('load', () => { //Line chart
+            createLine()
+        });   
+
 
     </script>
 </body>
