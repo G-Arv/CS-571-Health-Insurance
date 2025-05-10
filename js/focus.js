@@ -131,3 +131,53 @@ createPieChart(currState);
 createBarChart(currState);
 createBarChart2(currState);
 
+function createLine() {
+    d3.csv("data3/alldata2.csv").then(data => {
+        data.forEach(d => { d.Year =+ d.Year; d.Value =+ d["Total Health Spending"]; });
+        const svg = d3.select("#line-chart"), margin = {top: 20, right: 30, bottom: 50, left: 60},
+            width =+ svg.attr("width") - margin.left - margin.right, height =+ svg.attr("height") - margin.top - margin.bottom;
+
+        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+        const x = d3.scaleLinear().range([0, width]);
+        const y = d3.scaleLinear().range([height, 0]);
+        const color = d3.scaleOrdinal(d3.schemeCategory10);
+        const line = d3.line().x(d => x(d.Year)).y(d => y(d.Value));
+        const allStates = Array.from(new Set(data.map(d => d.Location))).sort();
+        const stateData = d3.groups(data, d => d.Location).map(([key, values]) => ({state: key, values: values.sort((a, b) => a.Year - b.Year)
+        }));
+
+        x.domain(d3.extent(data, d => d.Year));
+        y.domain([0, d3.max(data, d => d.Value)]);
+        g.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x).tickFormat(d3.format("d")));
+        g.append("g").call(d3.axisLeft(y));
+
+        const checkContainer = d3.select("#checkbox-container"); //check box for each state
+        allStates.forEach(state => {
+            checkContainer.append("label").html(`<input type="checkbox" value="${state}"> ${state}`).on("change", updateChart);
+        });
+
+        function updateChart() {
+            const selected = Array.from(document.querySelectorAll("#checkbox-container input[type=checkbox]:checked")).map(d => d.value);
+            const filtered = stateData.filter(d => selected.includes(d.state));
+            const lines = g.selectAll(".line").data(filtered, d => d.state);
+            
+            lines.enter().append("path") //lines
+                .attr("class", "line").attr("fill", "none").attr("stroke", d => color(d.state)).attr("stroke-width", 2).merge(lines)
+                .transition().duration(500).attr("d", d => line(d.values));
+
+            lines.exit().remove();
+
+            const legendContainer = d3.select("#legend");
+            legendContainer.selectAll("*").remove(); 
+
+            filtered.forEach(d => {
+                const item = legendContainer.append("div").attr("class", "legend-item");
+                item.append("div").attr("class", "legend-color").style("background-color", color(d.state));
+                item.append("span").text(d.state);
+            });
+        }
+
+    });
+
+
+}
