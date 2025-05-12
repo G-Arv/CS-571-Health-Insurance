@@ -162,8 +162,6 @@ svg {
 }
 
 
-
-
 .charts-container2 {
     display: flex;
     flex-wrap: wrap;
@@ -212,17 +210,17 @@ svg {
 
 #legend {
     display: flex;
-    flex-wrap: wrap;     /* Allows wrapping if too many states */
-    gap: 12px;            /* Space between legend items */
+    flex-wrap: wrap;     
+    gap: 12px;           
     margin-top: 10px;
     font-size: 14px;
   }
   
-  .legend-item {
+ .legend-item {
     display: flex;
     align-items: center;
-  }
-  .legend-color {
+}
+ .legend-color {
     width: 12px;
     height: 12px;
     margin-right: 6px;

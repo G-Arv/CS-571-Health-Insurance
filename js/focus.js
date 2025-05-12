@@ -151,12 +151,16 @@ function createLine() {
         g.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x).tickFormat(d3.format("d")));
         g.append("g").call(d3.axisLeft(y));
 
+        //ChatGPT(LLM) By OpenAI was used to create the state selecting line functionality for the line graph when the user clicks a state's check box the line for that state appears
+        //“Checkbox Toggle for D3 Chart”. ChatGPT, 9 May 2025, OpenAI, March 2023, chat.openai.com.
         const checkContainer = d3.select("#checkbox-container"); //check box for each state
         allStates.forEach(state => {
             checkContainer.append("label").html(`<input type="checkbox" value="${state}"> ${state}`).on("change", updateChart);
         });
 
         function updateChart() {
+            //ChatGPT(LLM) By OpenAI was used to create the state selecting line functionality for the line graph when the user clicks a state's check box the line for that state appears
+        //“Checkbox Toggle for D3 Chart”. ChatGPT, 9 May 2025, OpenAI, March 2023, chat.openai.com.
             const selected = Array.from(document.querySelectorAll("#checkbox-container input[type=checkbox]:checked")).map(d => d.value);
             const filtered = stateData.filter(d => selected.includes(d.state));
             const lines = g.selectAll(".line").data(filtered, d => d.state);
