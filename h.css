@@ -199,7 +199,7 @@ svg {
     text-align: center;
     background-color: lightblue;
     font-size: 16px;
-    width: 1000px;
+    width: 1200px;
 }
 
 #checkbox-container label {
@@ -213,7 +213,8 @@ svg {
     flex-wrap: wrap;     
     gap: 12px;           
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 15px;
+    
   }
   
  .legend-item {
@@ -221,7 +222,7 @@ svg {
     align-items: center;
 }
  .legend-color {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     margin-right: 6px;
   }
