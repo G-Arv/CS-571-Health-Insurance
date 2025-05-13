@@ -173,7 +173,7 @@ function createLine() {
             lines.exit().remove();
 
             const legendContainer = d3.select("#legend");
-            legendContainer.selectAll("*").remove(); 
+            legendContainer.selectAll("*").remove(); //remove legend for states no longer selected
 
             filtered.forEach(d => {
                 const item = legendContainer.append("div").attr("class", "legend-item");
