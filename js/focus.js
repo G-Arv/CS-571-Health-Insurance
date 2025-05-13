@@ -142,7 +142,7 @@ function createLine() {
         const y = d3.scaleLinear().range([height, 0]);
         const color = d3.scaleOrdinal(d3.schemeCategory10);
         const line = d3.line().x(d => x(d.Year)).y(d => y(d.Value));
-        const allStates = Array.from(new Set(data.map(d => d.Location))).sort();
+        const allStates = Array.from(new Set(data.filter(d => d.Location && d.Location !== "District of Columbia").map(d => d.Location))).sort();
         const stateData = d3.groups(data, d => d.Location).map(([key, values]) => ({state: key, values: values.sort((a, b) => a.Year - b.Year)
         }));
 
